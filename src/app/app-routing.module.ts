@@ -7,6 +7,7 @@ const routes: Routes = [
 
   { path: '', component: MenuComponent, children: [
       { path: 'employees', loadChildren: () => import('./pages/employees/employees.module').then(m => m.EmployeesModule) },
+      { path: 'addresses', loadChildren: () => import('./pages/addresses/addresses.module').then(m => m.AddressesModule) },
     ]
   },
 
