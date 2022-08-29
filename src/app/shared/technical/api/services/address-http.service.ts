@@ -19,13 +19,13 @@ export class AddressHttpService {
     address: Omit<AddressDetails, 'id'>
   ): Observable<AddressDetails> {
     return this.http
-      .post<{ response: AddressDetails }>(`/api/address`, address)
-      .pipe(map(({ response }) => response));
+      .post<{ address: AddressDetails }>(`/api/address`, address)
+      .pipe(map(({ address }) => address));
   }
 
   editAddress(address: AddressDetails): Observable<AddressDetails> {
     return this.http
-      .put<{ response: AddressDetails }>(`/api/address/${address.id}`, address)
-      .pipe(map(({ response }) => response));
+      .put<{ address: AddressDetails }>(`/api/address/${address.id}`, address)
+      .pipe(map(({ address }) => address));
   }
 }
