@@ -20,6 +20,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs';
 import { ForceNumberModule } from 'src/app/shared/behavior/force-number/force-number.module';
@@ -43,6 +44,7 @@ import { isNumberValidator } from 'src/app/shared/utils/validators/number.valida
     MatFormFieldModule,
     MatInputModule,
     ForceNumberModule,
+    MatSlideToggleModule,
   ],
 })
 export class AddressCreateOrEditDialogComponent implements OnInit {
@@ -69,6 +71,7 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
       isNumberValidator,
     ]),
     ville: new FormControl<string>('', Validators.required),
+    active: new FormControl<boolean>(false),
   });
 
   constructor(

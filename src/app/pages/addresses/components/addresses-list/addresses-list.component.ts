@@ -10,8 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTable, MatTableModule } from '@angular/material/table';
+
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, tap } from 'rxjs';
 import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
@@ -37,6 +39,7 @@ import { AddressesListDataSource } from './addresses-list-datasource';
     MatButtonModule,
     MatDialogModule,
     AddressCreateOrEditDialogComponent,
+    MatSlideToggleModule,
   ],
 })
 export class AddressesListComponent implements AfterViewInit, OnChanges {

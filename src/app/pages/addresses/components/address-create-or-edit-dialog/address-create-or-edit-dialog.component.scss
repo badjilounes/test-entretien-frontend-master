@@ -1,3 +1,7 @@
+.mat-dialog-title {
+  margin-bottom: 0;
+}
+
 .mat-dialog-content {
   display: flex;
   flex-direction: column;
@@ -5,4 +9,10 @@
 
 .mat-dialog-actions {
   justify-content: flex-end;
+}
+
+.active-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
