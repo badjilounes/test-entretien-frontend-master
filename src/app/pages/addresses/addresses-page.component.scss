@@ -1,3 +1,11 @@
 :host {
-  padding: 24px;
+  padding: 8px 16px;
+  display: grid;
+  grid-template-rows: min-content auto;
+  row-gap: 8px;
+}
+
+
+.add-address-button {
+  justify-self: flex-end;
 }

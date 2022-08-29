@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { LetModule } from '@ngrx/component';
 import { Observable } from 'rxjs';
 import { AddressDetails } from 'src/app/shared/server/data.interface';
@@ -15,6 +16,7 @@ import { AddressesListComponent } from './components/addresses-list/addresses-li
   imports: [
     CommonModule,
     AddressesListComponent,
+    MatButtonModule,
     LetModule,
   ]
 })
