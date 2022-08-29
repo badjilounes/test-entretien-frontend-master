@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './core/menu/menu.component';
+import { MenuComponent } from './layouts/menu/menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'employees', pathMatch: 'full' },
