@@ -41,12 +41,14 @@ export const employeesData: EmployeeDetails[] = [
   },
 ];
 
-export const addressData: AddressDetails = {
-  id: 1,
-  nom: 'Zurich',
-  rue: 'Engelstrasse',
-  numero: 78,
-  zip: 8004,
-  ville: 'Zürich',
-  active: true,
-};
+export const addressesData: AddressDetails[] = [
+  {
+    id: 1,
+    nom: 'Zurich',
+    rue: 'Engelstrasse',
+    numero: 78,
+    zip: 8004,
+    ville: 'Zürich',
+    active: true,
+  },
+];

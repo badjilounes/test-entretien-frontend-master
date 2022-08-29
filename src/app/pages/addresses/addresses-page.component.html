@@ -1,5 +1,11 @@
-<ng-container *ngrxLet="addresses$; let addresses">
-  <button mat-raised-button color="primary" class="add-address-button">Ajouter une adresse</button>
-  <app-addresses-list [addresses]="addresses"></app-addresses-list>
-</ng-container>
-
+<button
+  mat-raised-button
+  color="primary"
+  class="add-address-button"
+  (click)="createAddress()"
+>
+  Ajouter une adresse
+</button>
+<app-addresses-list
+  [addresses]="(addresses$ | async) || []"
+></app-addresses-list>

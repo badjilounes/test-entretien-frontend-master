@@ -1,15 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { AddressesPageStore } from './addresses-page.store';
 
 import { AddressesRoutingModule } from './addresses-routing.module';
-import { AddressesPageComponent } from './addresses-page.component';
-import { AddressPipe } from './pipes/address.pipe';
-
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AddressesRoutingModule,
-  ],
+  imports: [CommonModule, AddressesRoutingModule],
+  providers: [AddressesPageStore],
 })
-export class AddressesModule { }
+export class AddressesModule {}

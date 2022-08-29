@@ -1,7 +1,7 @@
-import { Model, Response, Registry, Server } from 'miragejs';
+import { Model, Registry, Response, Server } from 'miragejs';
 import { ModelDefinition } from 'miragejs/-types';
 import Schema from 'miragejs/orm/schema';
-import { addressData as addressData, employeesData as employeesData } from './data';
+import { addressesData, employeesData } from './data';
 import { AddressDetails, EmployeeDetails } from './data.interface';
 
 const EmployeeModel: ModelDefinition<EmployeeDetails> = Model.extend({});
@@ -17,7 +17,7 @@ type AppRegistry = Registry<
 type AppSchema = Schema<AppRegistry>;
 
 const employees: EmployeeDetails[] = employeesData;
-const addresses: AddressDetails[] = [addressData];
+const addresses: AddressDetails[] = addressesData;
 
 export function makeServer() {
   return new Server({
@@ -30,6 +30,7 @@ export function makeServer() {
     routes() {
       this.namespace = 'api';
       let newEmployeeId = 3;
+      let newAddressId = 2;
 
       this.get('/employee', (schema: AppSchema) => {
         const employee = schema.all('employee');
@@ -38,7 +39,7 @@ export function makeServer() {
       });
 
       this.get('/employee/:id', (schema: AppSchema, request) => {
-        const param = request.params['id'];
+        const param: string = request.params['id'];
         const response = schema.find('employee', param);
 
         return new Response(200, {}, response || 'foo');
@@ -57,6 +58,31 @@ export function makeServer() {
         const address = schema.all('address');
 
         return new Response(200, {}, address || 'foo');
+      });
+
+      this.post('/address', (schema, request) => {
+        const attrs = JSON.parse(request.requestBody);
+        attrs.id = newAddressId++;
+        schema.create('address', attrs);
+
+        return new Response(
+          200,
+          {},
+          schema.find('address', attrs.id) ?? undefined
+        );
+      });
+
+      this.put('/address/:id', (schema, request) => {
+        const attrs = JSON.parse(request.requestBody);
+        const param: string = request.params['id'];
+        const address = schema.find('address', param);
+        address?.update(attrs);
+
+        return new Response(
+          200,
+          {},
+          schema.find('address', param) ?? undefined
+        );
       });
     },
     seeds(server) {
