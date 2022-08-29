@@ -1,68 +1,68 @@
 import { Model, Response, Registry, Server } from 'miragejs';
 import { ModelDefinition } from 'miragejs/-types';
 import Schema from 'miragejs/orm/schema';
-import { adresseData, employesData } from './data';
-import { AdresseDetails, EmployeDetails } from './data.interface';
+import { addressData as addressData, employeesData as employeesData } from './data';
+import { AddressDetails, EmployeeDetails } from './data.interface';
 
-const EmployeModel: ModelDefinition<EmployeDetails> = Model.extend({});
-const AdresseModel: ModelDefinition<AdresseDetails> = Model.extend({});
+const EmployeeModel: ModelDefinition<EmployeeDetails> = Model.extend({});
+const AddressModel: ModelDefinition<AddressDetails> = Model.extend({});
 
 type AppRegistry = Registry<
   {
-    employe: typeof EmployeModel;
-    adresse: typeof AdresseModel;
+    employee: typeof EmployeeModel;
+    address: typeof AddressModel;
   },
   {}
 >;
 type AppSchema = Schema<AppRegistry>;
 
-const employes: EmployeDetails[] = employesData;
-const adresses: AdresseDetails[] = [adresseData];
+const employees: EmployeeDetails[] = employeesData;
+const addresses: AddressDetails[] = [addressData];
 
 export function makeServer() {
   return new Server({
     logging: true,
     models: {
-      employe: EmployeModel,
-      adresse: AdresseModel,
+      employee: EmployeeModel,
+      address: AddressModel,
     },
 
     routes() {
       this.namespace = 'api';
-      let newEmployeId = 3;
+      let newEmployeeId = 3;
 
-      this.get('/employe', (schema: AppSchema) => {
-        const employe = schema.all('employe');
+      this.get('/employee', (schema: AppSchema) => {
+        const employee = schema.all('employee');
 
-        return new Response(200, {}, employe || 'foo');
+        return new Response(200, {}, employee || 'foo');
       });
 
-      this.get('/employe/:id', (schema: AppSchema, request) => {
+      this.get('/employee/:id', (schema: AppSchema, request) => {
         const param = request.params['id'];
-        const response = schema.find('employe', param);
+        const response = schema.find('employee', param);
 
         return new Response(200, {}, response || 'foo');
       });
 
-      this.post('/employe', (schema, request) => {
+      this.post('/employee', (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
-        attrs.id = newEmployeId++;
-        schema.create('employe', attrs);
-        const response = schema.find('employe', attrs.id);
+        attrs.id = newEmployeeId++;
+        schema.create('employee', attrs);
+        const response = schema.find('employee', attrs.id);
 
         return new Response(200, {}, response || 'foo');
       });
 
-      this.get('/adresse', (schema: AppSchema) => {
-        const adresse = schema.all('adresse');
+      this.get('/address', (schema: AppSchema) => {
+        const address = schema.all('address');
 
-        return new Response(200, {}, adresse || 'foo');
+        return new Response(200, {}, address || 'foo');
       });
     },
     seeds(server) {
       server.db.loadData({
-        employes: employes,
-        adresses: adresses,
+        employees,
+        addresses,
       });
     },
   });

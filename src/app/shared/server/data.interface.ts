@@ -1,4 +1,4 @@
-export interface EmployeDetails {
+export interface EmployeeDetails {
   id: number;
   nom: string;
   prenom: string;
@@ -13,15 +13,17 @@ export interface EmployeDetails {
     numero: number;
     zip: number;
     ville: string;
+    active: boolean;
   };
   adresseSuccursale: number;
 }
 
-export interface AdresseDetails {
+export interface AddressDetails {
   id: number;
   nom: string;
   rue: string;
   numero: number;
   zip: number;
   ville: string;
+  active: boolean;
 }

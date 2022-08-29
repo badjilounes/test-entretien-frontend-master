@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { EmployeService } from './shared/services/api';
+import { EmployeeHttpService } from './shared/services/employee-http.service';
 import { makeServer } from './shared/server/server';
-import { EmployeDetails } from './shared/server/data.interface';
+import { EmployeeDetails } from './shared/server/data.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +10,25 @@ import { EmployeDetails } from './shared/server/data.interface';
 export class AppComponent {
   title = 'globaz-gestion';
 
-  constructor(private employeService: EmployeService) {
+  constructor(private employeService: EmployeeHttpService) {
     makeServer();
   }
 
   ngOnInit(): void {
     // Récuperer un seul employé
-    this.employeService.getEmployeById(2).subscribe((data) => {
+    this.employeService.getEmployeeById(2).subscribe((data) => {
       console.log('getEmployeById', data);
     });
 
     // Récuperer les adresses
-    this.employeService.getEmployesAdresse().subscribe((data) => {
+    this.employeService.getEmployeesAddress().subscribe((data) => {
       console.log('getEmployesAdresse', data);
     });
   }
 
   nouvelEmploye(): void {
     // Création d'un employé
-    const newEmploye: EmployeDetails = {
+    const newEmploye: EmployeeDetails = {
       id: 0,
       nom: 'Mard',
       prenom: 'Ysa',
@@ -43,18 +43,19 @@ export class AppComponent {
         numero: 78,
         zip: 8004,
         ville: 'Zürich',
+        active: true,
       },
       adresseSuccursale: 1,
     };
 
-    this.employeService.addEmploye(newEmploye).subscribe((data) => {
+    this.employeService.addEmployee(newEmploye).subscribe((data) => {
       console.log('addEmploye', data);
     });
   }
 
   getEmployesList(): void {
     // Récuperer les employés
-    this.employeService.getEmployesList().subscribe((data) => {
+    this.employeService.getEmployeesList().subscribe((data) => {
       console.log('getEmployesList', data);
     });
   }

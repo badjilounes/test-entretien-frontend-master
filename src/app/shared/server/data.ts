@@ -1,6 +1,6 @@
-import { AdresseDetails, EmployeDetails } from './data.interface';
+import { AddressDetails, EmployeeDetails } from './data.interface';
 
-export const employesData: EmployeDetails[] = [
+export const employeesData: EmployeeDetails[] = [
   {
     id: 1,
     nom: 'Feria',
@@ -16,6 +16,7 @@ export const employesData: EmployeDetails[] = [
       numero: 78,
       zip: 8004,
       ville: 'Zürich',
+      active: true,
     },
     adresseSuccursale: 1,
   },
@@ -34,16 +35,18 @@ export const employesData: EmployeDetails[] = [
       numero: 78,
       zip: 8004,
       ville: 'Zürich',
+      active: true,
     },
     adresseSuccursale: 1,
   },
 ];
 
-export const adresseData: AdresseDetails = {
+export const addressData: AddressDetails = {
   id: 1,
   nom: 'Zurich',
   rue: 'Engelstrasse',
   numero: 78,
   zip: 8004,
   ville: 'Zürich',
+  active: true,
 };

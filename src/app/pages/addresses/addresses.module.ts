@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AddressesRoutingModule } from './addresses-routing.module';
 import { AddressesPageComponent } from './addresses-page.component';
+import { AddressPipe } from './pipes/address.pipe';
 
 
 @NgModule({
-  declarations: [
-    AddressesPageComponent
-  ],
   imports: [
     CommonModule,
-    AddressesRoutingModule
-  ]
+    AddressesRoutingModule,
+  ],
 })
 export class AddressesModule { }

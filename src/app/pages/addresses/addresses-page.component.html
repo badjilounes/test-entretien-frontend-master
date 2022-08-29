@@ -1,1 +1,4 @@
-<p>addresses works!</p>
+<ng-container *ngrxLet="addresses$; let addresses" >
+  <app-addresses-list [addresses]="addresses"></app-addresses-list>
+</ng-container>
+
