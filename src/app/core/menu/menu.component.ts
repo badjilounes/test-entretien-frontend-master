@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +10,13 @@ import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@angular/cdk/layout';
+import { LetModule } from '@ngrx/component';
+
+
+type RouteData = {
+  link: string;
+  title: string;
+}
 
 @Component({
   selector: 'app-menu',
@@ -25,6 +32,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatListModule,
     LayoutModule,
     RouterModule,
+    LetModule,
   ]
 })
 export class MenuComponent {
@@ -34,6 +42,11 @@ export class MenuComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  routes$: Observable<RouteData[]> = of([
+    { link: 'employees', title: 'Employees' },
+    { link: 'addresses', title: 'Addresses' },
+  ])
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
