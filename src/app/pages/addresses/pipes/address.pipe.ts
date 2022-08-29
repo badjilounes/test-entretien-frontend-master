@@ -5,7 +5,7 @@ import { AddressDetails } from 'src/app/shared/technical/api/server/data.interfa
   name: 'address',
 })
 export class AddressPipe implements PipeTransform {
-  transform(address: AddressDetails): unknown {
+  transform(address: AddressDetails): string {
     return [
       address.numero,
       address.rue,

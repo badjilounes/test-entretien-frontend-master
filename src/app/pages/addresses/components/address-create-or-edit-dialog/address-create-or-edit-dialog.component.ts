@@ -14,20 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
 import { CommonModule } from '@angular/common';
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { tap } from 'rxjs';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ForceNumberModule } from 'src/app/shared/behavior/force-number/force-number.module';
 import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
-import { AddressHttpService } from 'src/app/shared/technical/api/services/address-http.service';
 import { isNegativeValidator } from 'src/app/shared/utils/validators/is-negative.validator';
 import { isNumberValidator } from 'src/app/shared/utils/validators/number.validator';
+import { AddressesPageStore } from '../../addresses-page.store';
 
 @UntilDestroy()
 @Component({
@@ -75,8 +70,7 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
   });
 
   constructor(
-    private readonly dialog: MatDialogRef<AddressCreateOrEditDialogComponent>,
-    private readonly addressHttpService: AddressHttpService,
+    private readonly store: AddressesPageStore,
     @Inject(MAT_DIALOG_DATA) public data?: AddressDetails
   ) {}
 
@@ -86,31 +80,15 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
     }
   }
 
-  cancel() {
-    this.dialog.close();
-  }
-
   submit() {
     if (this.form.invalid) {
       return;
     }
 
     if (this.isEditMode) {
-      this.addressHttpService
-        .editAddress(this.form.value)
-        .pipe(
-          tap(() => this.dialog.close({ refresh: true })),
-          untilDestroyed(this)
-        )
-        .subscribe();
+      this.store.editAddress(this.form.value);
     } else {
-      this.addressHttpService
-        .createAddress(this.form.value)
-        .pipe(
-          tap(() => this.dialog.close({ refresh: true })),
-          untilDestroyed(this)
-        )
-        .subscribe();
+      this.store.createAddress(this.form.value);
     }
   }
 }

@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
+import { AddressPipe } from '../../pipes/address.pipe';
 
 /**
  * Data source for the AddressesList view. This class should
@@ -14,6 +15,8 @@ export class AddressesListDataSource extends DataSource<AddressDetails> {
   data: AddressDetails[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+
+  private readonly addressPipe: AddressPipe = new AddressPipe();
 
   constructor() {
     super();
@@ -75,10 +78,16 @@ export class AddressesListDataSource extends DataSource<AddressDetails> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name':
+        case 'nom':
           return compare(a.nom, b.nom, isAsc);
-        case 'id':
-          return compare(+a.id, +b.id, isAsc);
+        case 'active':
+          return compare(Number(a.active), Number(b.active), isAsc);
+        case 'address':
+          return compare(
+            this.addressPipe.transform(a),
+            this.addressPipe.transform(b),
+            isAsc
+          );
         default:
           return 0;
       }
