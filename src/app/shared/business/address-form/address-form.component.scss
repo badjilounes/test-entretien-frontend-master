@@ -1,0 +1,38 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+}
+
+.active-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.nom-form-field {
+  width: 100%;
+}
+
+.numero-form-field {
+  flex-basis: 125px;
+  min-width: 125px;
+  flex-grow: 0;
+}
+
+.rue-form-field {
+  flex-grow: 1;
+  flex-basis: 310px;
+}
+
+.zip-form-field {
+  flex-grow: 0;
+  flex-basis: 125px;
+  min-width: 125px;
+}
+
+.ville-form-field {
+  flex: 0;
+  flex-basis: 140px;
+}

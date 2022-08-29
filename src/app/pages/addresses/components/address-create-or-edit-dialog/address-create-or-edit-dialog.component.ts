@@ -4,12 +4,7 @@ import {
   Inject,
   OnInit,
 } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
@@ -20,8 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { ForceNumberModule } from 'src/app/shared/behavior/force-number/force-number.module';
-import { isNegativeValidator } from 'src/app/shared/utils/validators/is-negative.validator';
-import { isNumberValidator } from 'src/app/shared/utils/validators/number.validator';
+import { AddressFormComponent } from 'src/app/shared/business/address-form/address-form.component';
 import { AddressesPageStore } from '../../addresses-page.store';
 
 @UntilDestroy()
@@ -40,6 +34,7 @@ import { AddressesPageStore } from '../../addresses-page.store';
     MatInputModule,
     ForceNumberModule,
     MatSlideToggleModule,
+    AddressFormComponent,
   ],
 })
 export class AddressCreateOrEditDialogComponent implements OnInit {
@@ -51,23 +46,10 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
     return this.isEditMode ? 'Modifier une adresse' : 'Ajouter une adresse';
   }
 
+  address = new FormControl();
+
   form: FormGroup = new FormGroup({
-    id: new FormControl<number | null>(null),
-    nom: new FormControl<string>('', Validators.required),
-    numero: new FormControl<number | null>(null, [
-      Validators.required,
-      isNegativeValidator,
-      isNumberValidator,
-    ]),
-    rue: new FormControl<string>('', Validators.required),
-    zip: new FormControl<number | null>(null, [
-      Validators.required,
-      isNegativeValidator,
-      isNumberValidator,
-    ]),
-    ville: new FormControl<string>('', Validators.required),
-    active: new FormControl<boolean>(false),
-    isSuccursal: new FormControl<boolean>(true),
+    address: this.address,
   });
 
   constructor(
@@ -77,7 +59,7 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data) {
-      this.form.patchValue(this.data);
+      this.form.patchValue({ address: this.data });
     }
   }
 
@@ -87,9 +69,9 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
     }
 
     if (this.isEditMode) {
-      this.store.editAddress(this.form.value);
+      this.store.editAddress(this.form.value.address);
     } else {
-      this.store.createAddress(this.form.value);
+      this.store.createAddress(this.form.value.address);
     }
   }
 }

@@ -79,7 +79,7 @@ export class AddressesPageStore extends ComponentStore<AddressesPageStoreState> 
       return save$.pipe(
         map((address: AddressDetails | void) =>
           this.dialog.open(AddressCreateOrEditDialogComponent, {
-            minWidth: 400,
+            width: '500px',
             data: address,
           })
         ),

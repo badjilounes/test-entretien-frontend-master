@@ -2,87 +2,12 @@
 
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div mat-dialog-content>
-    <div class="active-container">
-      <mat-slide-toggle formControlName="active">Active</mat-slide-toggle>
-    </div>
-
-    <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Nom</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="nom"
-        placeholder="Ajouter un nom"
-      />
-      <mat-error *ngIf="form.controls.nom.errors?.required">
-        Entrez un nom
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Numéro de rue</mat-label>
-      <input
-        matInput
-        appForceNumber
-        type="number"
-        min="0"
-        formControlName="numero"
-        placeholder="Ajouter un numéro de rue"
-      />
-      <mat-error *ngIf="form.controls.numero.errors?.required">
-        Entrez un numéro de rue
-      </mat-error>
-      <mat-error *ngIf="form.controls.numero.errors?.isNegative">
-        Le numéro de rue doit être positif
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Rue</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="rue"
-        placeholder="Ajouter une rue"
-      />
-      <mat-error *ngIf="form.controls.rue.errors?.required">
-        Entrez une rue
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Code postal</mat-label>
-      <input
-        matInput
-        appForceNumber
-        type="number"
-        min="0"
-        formControlName="zip"
-        placeholder="Ajouter un code postal"
-      />
-      <mat-error *ngIf="form.controls.zip.errors?.required">
-        Entrez un code postal
-      </mat-error>
-      <mat-error *ngIf="form.controls.zip.errors?.isNegative">
-        Le code postal doit être positif
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Ville</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="ville"
-        placeholder="Ajouter une ville"
-      />
-      <mat-error *ngIf="form.controls.ville.errors?.required">
-        Entrez une ville
-      </mat-error>
-    </mat-form-field>
+    <app-address-form formControlName="address"></app-address-form>
   </div>
   <div mat-dialog-actions>
     <button mat-button type="button" [mat-dialog-close]="false">Annuler</button>
-    <button mat-raised-button cdkFocusInitial color="primary">Valider</button>
+    <button mat-raised-button color="primary" [disabled]="address.invalid">
+      Valider
+    </button>
   </div>
 </form>
