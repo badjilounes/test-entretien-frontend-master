@@ -9,9 +9,9 @@ import { AddressDetails } from '../server/data.interface';
 export class AddressHttpService {
   constructor(private http: HttpClient) {}
 
-  getAddressList(): Observable<AddressDetails[]> {
+  getSuccursalAddressList(): Observable<AddressDetails[]> {
     return this.http
-      .get<{ addresses: AddressDetails[] }>(`/api/address`)
+      .get<{ addresses: AddressDetails[] }>(`/api/address/succursal`)
       .pipe(map(({ addresses }) => addresses));
   }
 

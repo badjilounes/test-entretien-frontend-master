@@ -1,22 +1,24 @@
+import {
+  BreakpointObserver,
+  Breakpoints,
+  LayoutModule,
+} from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, of } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule } from '@angular/common';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { LayoutModule } from '@angular/cdk/layout';
 import { LetModule } from '@ngrx/component';
-
+import { Observable, of } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 type RouteData = {
   link: string;
   title: string;
-}
+};
 
 @Component({
   selector: 'app-menu',
@@ -33,21 +35,20 @@ type RouteData = {
     LayoutModule,
     RouterModule,
     LetModule,
-  ]
+  ],
 })
 export class MenuComponent {
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
       shareReplay()
     );
 
   routes$: Observable<RouteData[]> = of([
-    { link: 'employees', title: 'Employees' },
-    { link: 'addresses', title: 'Addresses' },
-  ])
+    { link: 'employees', title: 'Employés' },
+    { link: 'addresses', title: 'Succursales' },
+  ]);
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
 }

@@ -26,4 +26,5 @@ export interface AddressDetails {
   zip: number;
   ville: string;
   active: boolean;
+  isSuccursal: boolean;
 }

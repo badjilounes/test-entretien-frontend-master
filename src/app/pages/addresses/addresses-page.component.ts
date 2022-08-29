@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { LetModule } from '@ngrx/component';
 import { Observable } from 'rxjs';
-import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
+import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { AddressesPageStore } from './addresses-page.store';
 import { AddressAddButtonComponent } from './components/address-add-button/address-add-button.component';
 import { AddressCreateOrEditDialogComponent } from './components/address-create-or-edit-dialog/address-create-or-edit-dialog.component';

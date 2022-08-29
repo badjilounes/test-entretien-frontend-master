@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
-import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
-import { AddressHttpService } from 'src/app/shared/technical/api/services/address-http.service';
+import { AddressDetails } from 'src/app/core/api/server/data.interface';
+import { AddressHttpService } from 'src/app/core/api/services/address-http.service';
 import { AddressCreateOrEditDialogComponent } from './components/address-create-or-edit-dialog/address-create-or-edit-dialog.component';
 
 type AddressesPageStoreState = {
@@ -63,7 +63,7 @@ export class AddressesPageStore extends ComponentStore<AddressesPageStoreState> 
 
   readonly getAddressList = this.effect((save$: Observable<void>) => {
     return save$.pipe(
-      switchMap(() => this.addressHttpService.getAddressList()),
+      switchMap(() => this.addressHttpService.getSuccursalAddressList()),
       tap((addresses: AddressDetails[]) =>
         this.patchState(() => ({ addresses }))
       ),

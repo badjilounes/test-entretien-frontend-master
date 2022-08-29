@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
+import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { AddressPipe } from '../../pipes/address.pipe';
 
 /**

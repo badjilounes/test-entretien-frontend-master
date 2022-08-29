@@ -50,5 +50,6 @@ export const addressesData: AddressDetails[] = [
     zip: 8004,
     ville: 'Zürich',
     active: true,
+    isSuccursal: true,
   },
 ];

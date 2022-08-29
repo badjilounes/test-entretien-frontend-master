@@ -54,8 +54,8 @@ export function makeServer() {
         return new Response(200, {}, response || 'foo');
       });
 
-      this.get('/address', (schema: AppSchema) => {
-        const address = schema.all('address');
+      this.get('/address/succursal', (schema: AppSchema) => {
+        const address = schema.where('address', { isSuccursal: true });
 
         return new Response(200, {}, address || 'foo');
       });

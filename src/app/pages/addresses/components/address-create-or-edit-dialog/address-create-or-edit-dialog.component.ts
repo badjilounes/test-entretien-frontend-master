@@ -18,8 +18,8 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { ForceNumberModule } from 'src/app/shared/behavior/force-number/force-number.module';
-import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
 import { isNegativeValidator } from 'src/app/shared/utils/validators/is-negative.validator';
 import { isNumberValidator } from 'src/app/shared/utils/validators/number.validator';
 import { AddressesPageStore } from '../../addresses-page.store';
@@ -67,6 +67,7 @@ export class AddressCreateOrEditDialogComponent implements OnInit {
     ]),
     ville: new FormControl<string>('', Validators.required),
     active: new FormControl<boolean>(false),
+    isSuccursal: new FormControl<boolean>(true),
   });
 
   constructor(

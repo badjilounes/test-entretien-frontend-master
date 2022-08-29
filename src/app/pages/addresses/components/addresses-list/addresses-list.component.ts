@@ -14,7 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTable, MatTableModule } from '@angular/material/table';
 
-import { AddressDetails } from 'src/app/shared/technical/api/server/data.interface';
+import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { AddressesPageStore } from '../../addresses-page.store';
 import { AddressPipeModule } from '../../pipes/address-pipe.module';
 import { AddressCreateOrEditDialogComponent } from '../address-create-or-edit-dialog/address-create-or-edit-dialog.component';

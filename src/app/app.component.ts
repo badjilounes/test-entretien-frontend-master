@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { makeServer } from './shared/technical/api/server/server';
+import { makeServer } from './core/api/server/server';
 
 @Component({
   selector: 'app-root',
