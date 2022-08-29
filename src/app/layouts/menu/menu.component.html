@@ -1,11 +1,11 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" *ngrxLet="isHandset$; let isHandset">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+      [attr.role]="isHandset ? 'dialog' : 'navigation'"
+      [mode]="isHandset ? 'over' : 'side'"
+      [opened]="!isHandset">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list *ngrxLet="routes$; let routes">
-      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.link">{{ route.title }}</a>
+      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.link" (click)="isHandset && drawer.close()">{{ route.title }}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -15,7 +15,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Globaz Gestion</span>
