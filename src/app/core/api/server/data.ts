@@ -17,8 +17,10 @@ export const employeesData: EmployeeDetails[] = [
       zip: 8004,
       ville: 'Zürich',
       active: true,
+      isSuccursal: false,
     },
     adresseSuccursale: 1,
+    active: true,
   },
   {
     id: 2,
@@ -36,8 +38,10 @@ export const employeesData: EmployeeDetails[] = [
       zip: 8004,
       ville: 'Zürich',
       active: true,
+      isSuccursal: false,
     },
     adresseSuccursale: 1,
+    active: true,
   },
 ];
 

@@ -15,7 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { AddressDetails } from 'src/app/core/api/server/data.interface';
 import { ForceNumberModule } from 'src/app/shared/behavior/force-number/force-number.module';
-import { AddressFormComponent } from 'src/app/shared/business/address-form/address-form.component';
+import { AddressFormComponent } from 'src/app/shared/business/components/address-form/address-form.component';
 import { AddressesPageStore } from '../../addresses-page.store';
 
 @UntilDestroy()

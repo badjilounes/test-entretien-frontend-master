@@ -7,17 +7,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTable, MatTableModule } from '@angular/material/table';
 
 import { AddressDetails } from 'src/app/core/api/server/data.interface';
+import { AddressPipeModule } from '../../../../shared/business/pipes/address-pipe.module';
 import { AddressesPageStore } from '../../addresses-page.store';
-import { AddressPipeModule } from '../../pipes/address-pipe.module';
-import { AddressCreateOrEditDialogComponent } from '../address-create-or-edit-dialog/address-create-or-edit-dialog.component';
 import { AddressesListDataSource } from './addresses-list-datasource';
 
 @Component({
@@ -34,9 +31,6 @@ import { AddressesListDataSource } from './addresses-list-datasource';
     AddressPipeModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule,
-    AddressCreateOrEditDialogComponent,
-    MatSlideToggleModule,
   ],
 })
 export class AddressesListComponent implements OnChanges {

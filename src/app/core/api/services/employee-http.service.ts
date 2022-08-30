@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AddressDetails, EmployeeDetails } from '../server/data.interface';
 
 @Injectable({
@@ -10,7 +10,9 @@ export class EmployeeHttpService {
   constructor(private http: HttpClient) {}
 
   getEmployeesList(): Observable<EmployeeDetails[]> {
-    return this.http.get<EmployeeDetails[]>(`/api/employee`);
+    return this.http
+      .get<{ employees: EmployeeDetails[] }>(`/api/employee`)
+      .pipe(map(({ employees }) => employees));
   }
 
   getEmployeeById(id: number): Observable<EmployeeDetails> {
@@ -21,7 +23,14 @@ export class EmployeeHttpService {
     return this.http.get<AddressDetails[]>(`/api/address`);
   }
 
-  addEmployee(employee: EmployeeDetails): Observable<EmployeeDetails> {
+  createEmployee(employee: EmployeeDetails): Observable<EmployeeDetails> {
     return this.http.post<EmployeeDetails>(`/api/employee`, employee);
+  }
+
+  editEmployee(employee: EmployeeDetails): Observable<EmployeeDetails> {
+    return this.http.put<EmployeeDetails>(
+      `/api/employee/${employee.id}`,
+      employee
+    );
   }
 }

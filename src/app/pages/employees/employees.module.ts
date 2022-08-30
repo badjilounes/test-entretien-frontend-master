@@ -1,15 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmployeesPageComponent } from './employees-page.component';
+import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EmployeesPageStore } from './employees-page.store';
 import { EmployeesRoutingModule } from './employees-routing.module';
-
-
 
 @NgModule({
   imports: [
     CommonModule,
     EmployeesRoutingModule,
-    EmployeesPageComponent,
-  ]
+    MatDialogModule,
+    MatSnackBarModule,
+  ],
+  providers: [EmployeesPageStore],
 })
-export class EmployeesModule { }
+export class EmployeesModule {}

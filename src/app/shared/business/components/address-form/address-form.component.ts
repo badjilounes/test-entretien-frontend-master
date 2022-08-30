@@ -17,8 +17,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs';
 import { AddressDetails } from 'src/app/core/api/server/data.interface';
-import { isNegativeValidator } from '../../utils/validators/is-negative.validator';
-import { isNumberValidator } from '../../utils/validators/number.validator';
+import { isNegativeValidator } from '../../../utils/validators/is-negative.validator';
+import { isNumberValidator } from '../../../utils/validators/number.validator';
 
 @UntilDestroy()
 @Component({

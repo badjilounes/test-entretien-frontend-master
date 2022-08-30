@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { LetModule } from '@ngrx/component';
 import { Observable } from 'rxjs';
@@ -19,7 +18,6 @@ import { AddressesListComponent } from './components/addresses-list/addresses-li
   imports: [
     CommonModule,
     AddressesListComponent,
-    MatButtonModule,
     LetModule,
     AddressCreateOrEditDialogComponent,
     AddressAddButtonComponent,

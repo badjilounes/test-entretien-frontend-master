@@ -6,16 +6,9 @@ export interface EmployeeDetails {
   dateDébutContrat: string;
   tempsTravail: number;
   note: string;
-  adresseDomicile: {
-    id: number;
-    nom: string;
-    rue: string;
-    numero: number;
-    zip: number;
-    ville: string;
-    active: boolean;
-  };
+  adresseDomicile: AddressDetails;
   adresseSuccursale: number;
+  active: boolean;
 }
 
 export interface AddressDetails {

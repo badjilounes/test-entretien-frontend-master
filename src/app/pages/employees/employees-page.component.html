@@ -1,1 +1,4 @@
-<p>employees-page works!</p>
+<ng-container *ngrxLet="employees$; let employees">
+  <app-employees-add-button></app-employees-add-button>
+  <app-employees-list [employees]="employees"></app-employees-list>
+</ng-container>
