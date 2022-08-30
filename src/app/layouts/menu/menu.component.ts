@@ -47,7 +47,7 @@ export class MenuComponent {
 
   routes$: Observable<RouteData[]> = of([
     { link: 'employees', title: 'Employés' },
-    { link: 'addresses', title: 'Succursales' },
+    { link: 'addresses', title: 'Adresses' },
   ]);
 
   constructor(private breakpointObserver: BreakpointObserver) {}
